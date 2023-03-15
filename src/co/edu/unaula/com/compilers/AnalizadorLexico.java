@@ -1,5 +1,6 @@
 package co.edu.unaula.com.compilers;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.Hashtable;
 
@@ -15,6 +16,12 @@ public class AnalizadorLexico {
     public AnalizadorLexico() {
         this.reservar(new Palabra(258, "true"));
         this.reservar(new Palabra(259, "false"));
+        this.reservar(new Palabra(300,"//"));
+        this.reservar(new Palabra(301,"+"));
+        this.reservar(new Palabra(301,"-"));
+        this.reservar(new Palabra(301,"*"));
+        this.reservar(new Palabra(302,"<"));
+        this.reservar(new Palabra(302,">"));
     }
 
     public Token explorar() throws IOException {
@@ -33,13 +40,32 @@ public class AnalizadorLexico {
                         System.out.println(valor.getCadena());
                         return valor;
                     }
+                    if(!Character.isAlphabetic(this.vistazo)){
+
+                        StringBuffer b = new StringBuffer();
+
+                        do {
+                            b.append(this.vistazo);
+                            this.vistazo = (char)System.in.read();
+                        } while(Character.isLetterOrDigit(this.vistazo));
+
+                        String s = b.toString();
+                        Palabra w = (Palabra)this.palabras.get(s);
+                        if (w != null) {
+                            System.out.println(w.getLexema());
+                            return w;
+                        }
+
+                    }
 
                     if (!Character.isLetter(this.vistazo)) {
                         Token t = new Token(this.vistazo);
                         System.out.println(t.getEtiqueta());
                         this.vistazo = ' ';
                         return t;
+
                     }
+
 
                     StringBuffer b = new StringBuffer();
 

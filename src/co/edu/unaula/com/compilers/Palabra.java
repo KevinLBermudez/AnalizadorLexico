@@ -12,7 +12,16 @@ public class Palabra extends Token{
         String cadena = "";
         if (this.lexema.equals("true")) {
             cadena = "Etiqueta.TRUE";
-        } else if (this.lexema.equals("false")) {
+        }else if(this.lexema.equals("+")){
+            cadena = "Etiqueta.SUMA";
+        }else if(this.lexema.equals("-")){
+            cadena = "Etiqueta.MENOS";
+        }else if(this.lexema.equals("*")){
+            cadena = "Etiqueta.MULTIPLICACION";
+        }
+        else if(this.lexema.equals("//")){
+            cadena = "Etiquete.COMENTARIO";
+        }else if (this.lexema.equals("false")) {
             cadena = "Etiqueta.FALSE";
         } else {
             cadena = "Etiqueta.ID";

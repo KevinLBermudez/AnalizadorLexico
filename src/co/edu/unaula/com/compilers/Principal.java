@@ -8,6 +8,7 @@ public class Principal {
 
     public Principal() {
     }
+
     public static void main(String[] ar) throws IOException {
         AnalizadorLexico aL = new AnalizadorLexico();
         aL.explorar();
