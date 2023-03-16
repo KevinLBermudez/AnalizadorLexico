@@ -20,8 +20,11 @@ public class AnalizadorLexico {
         this.reservar(new Palabra(301,"+"));
         this.reservar(new Palabra(301,"-"));
         this.reservar(new Palabra(301,"*"));
-        this.reservar(new Palabra(302,"<"));
+        this.reservar(new Palabra(301,"/"));
         this.reservar(new Palabra(302,">"));
+        this.reservar(new Palabra(302,">="));
+        this.reservar(new Palabra(302,"<"));
+        this.reservar(new Palabra(302,"<="));
     }
 
     public Token explorar() throws IOException {
@@ -47,7 +50,7 @@ public class AnalizadorLexico {
                         do {
                             b.append(this.vistazo);
                             this.vistazo = (char)System.in.read();
-                        } while(Character.isLetterOrDigit(this.vistazo));
+                        } while(Character.isAlphabetic(this.vistazo) ||this.vistazo == '=' || this.vistazo == '/');
 
                         String s = b.toString();
                         Palabra w = (Palabra)this.palabras.get(s);
@@ -56,6 +59,11 @@ public class AnalizadorLexico {
                             return w;
                         }
 
+                        w = new Palabra(302, s);
+                        this.palabras.put(s, w);
+                        System.out.println(w.getLexema());
+                        return w;
+
                     }
 
                     if (!Character.isLetter(this.vistazo)) {
@@ -63,7 +71,6 @@ public class AnalizadorLexico {
                         System.out.println(t.getEtiqueta());
                         this.vistazo = ' ';
                         return t;
-
                     }
 
 

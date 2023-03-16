@@ -8,9 +8,12 @@ public class Etiqueta {
     public static final int COMENTARIO = 300;
     public static final int SUMA = 301;
     public static final int RESTA = 301;
+    public static final int DIVISION = 301;
     public static final int MULTIPLICACION = 301;
-    public static final int MENORQUE = 302;
-    public static final int MAYORQUE = 302;
+    public static final int MAYOR = 302;
+    public static final int MAYOROIGUAL = 302;
+    public static final int MENOR = 302;
+    public static final int MENOROIGUAL = 302;
 
     public Etiqueta() {
     }

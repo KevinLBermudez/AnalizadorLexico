@@ -18,8 +18,17 @@ public class Palabra extends Token{
             cadena = "Etiqueta.MENOS";
         }else if(this.lexema.equals("*")){
             cadena = "Etiqueta.MULTIPLICACION";
-        }
-        else if(this.lexema.equals("//")){
+        }else if(this.lexema.equals("/")){
+            cadena = "Etiqueta.DIVISION";
+        }else if(this.lexema.equals(">")){
+            cadena = "Etiqueta.MAYOR";
+        }else if(this.lexema.equals(">=")){
+            cadena = "Etiqueta.MAYOR o IGUAL";
+        }else if(this.lexema.equals("<")){
+            cadena = "Etiqueta.MENOR";
+        }else if(this.lexema.equals("<=")){
+            cadena = "Etiqueta.MENOR o IGUAL";
+        }else if(this.lexema.equals("//")){
             cadena = "Etiquete.COMENTARIO";
         }else if (this.lexema.equals("false")) {
             cadena = "Etiqueta.FALSE";
